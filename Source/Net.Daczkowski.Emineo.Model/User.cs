@@ -2,6 +2,15 @@
 {
     public class User : Entity
     {
+        protected User()
+        {
+        }
+
+        public User(string name)
+        {
+            this.Name = name;
+        }
+
         public string Name { get; protected set; }
         
         public override int GetHashCode()

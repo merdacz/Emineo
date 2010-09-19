@@ -3,6 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net.Daczkowski.Emineo.Model", "Net.Daczkowski.Emineo.Model\Net.Daczkowski.Emineo.Model.csproj", "{7E9DFEF2-EA82-4273-8F5D-BAAAF12E748C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schemas", "Schemas", "{5E2A86DC-0810-4819-9623-2553A49E2A79}"
+	ProjectSection(SolutionItems) = preProject
+		nhibernate-configuration.xsd = nhibernate-configuration.xsd
+		nhibernate-mapping.xsd = nhibernate-mapping.xsd
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net.Daczkowski.Emineo.Tests", "Net.Daczkowski.Emineo.Tests\Net.Daczkowski.Emineo.Tests.csproj", "{495DF45B-5A39-4F43-B1D6-E4892876C087}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Settings", "Settings", "{CEC495B6-DF04-48E5-BD3E-F2816095FA00}"
+	ProjectSection(SolutionItems) = preProject
+		ProductAssemblyInfo.cs = ProductAssemblyInfo.cs
+		Settings.StyleCop = Settings.StyleCop
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +27,10 @@ Global
 		{7E9DFEF2-EA82-4273-8F5D-BAAAF12E748C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E9DFEF2-EA82-4273-8F5D-BAAAF12E748C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E9DFEF2-EA82-4273-8F5D-BAAAF12E748C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{495DF45B-5A39-4F43-B1D6-E4892876C087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{495DF45B-5A39-4F43-B1D6-E4892876C087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{495DF45B-5A39-4F43-B1D6-E4892876C087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{495DF45B-5A39-4F43-B1D6-E4892876C087}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

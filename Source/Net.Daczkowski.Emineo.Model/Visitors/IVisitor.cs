@@ -1,4 +1,4 @@
-﻿namespace Net.Tgd.NH.Model.Visitors
+﻿namespace Net.Daczkowski.Emineo.Model.Visitors
 {
     using System;
     using Net.Daczkowski.Emineo.Model;
