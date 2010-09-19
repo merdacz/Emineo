@@ -1,4 +1,4 @@
-﻿namespace Net.Daczkowski.Emineo.Tests.Spec
+﻿namespace Net.Daczkowski.Emineo.Tests
 {
     using System;
     using System.Linq;
