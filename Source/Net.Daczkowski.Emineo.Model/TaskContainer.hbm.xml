@@ -4,14 +4,14 @@
                    namespace="Net.Daczkowski.Emineo.Model">
   <class name="TaskContainer" table="TasksContainers" abstract="true">    
     <id name="ID">
-      <generator class="identity" />
+      <generator class="hilo" />
     </id>
     <bag name="Tasks" inverse="true" cascade="all-delete-orphan" >  
       <key column="ParentID" />
       <one-to-many class="Task" />
     </bag>    
-    <joined-subclass name="Task" table="Tasks">
-      <key column="TaskContainerId" />
+    <union-subclass name="Task" table="Tasks">
+      <!--<key column="TaskContainerId" />-->
       <property name="Summary" not-null="true"/>
       <property name="Description" not-null="true" />
       <property name="Estimate" not-null="true" />
@@ -22,11 +22,11 @@
         <key column="ParentID" />
         <one-to-many class="RegisteredWork" />
       </bag>
-    </joined-subclass>
-    <joined-subclass name="Project" table="Projects">
-      <key column="TaskContainerId" />
+    </union-subclass>
+    <union-subclass name="Project" table="Projects">
+      <!--<key column="TaskContainerId" />-->
       <property name="Name" not-null="true"/>
       <many-to-one name="Manager" class="User" cascade="save-update"/>
-    </joined-subclass>
+    </union-subclass>
   </class>
 </hibernate-mapping>

@@ -4,7 +4,7 @@
                    namespace="Net.Daczkowski.Emineo.Model">
   <class name="RegisteredWork" table="RegisteredWork">
     <id name="ID">
-      <generator class="identity" />
+      <generator class="hilo" />
     </id>
     <property name="WorkAmount" />
     <property name="Place" />

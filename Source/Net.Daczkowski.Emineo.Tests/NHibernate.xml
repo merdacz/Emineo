@@ -5,6 +5,7 @@
     <property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
     <property name="dialect">NHibernate.Dialect.MsSql2008Dialect</property>
     <property name="proxyfactory.factory_class">NHibernate.ByteCode.LinFu.ProxyFactoryFactory, NHibernate.ByteCode.LinFu</property>
+    <property name="generate_statistics">true</property>
     <mapping assembly="Net.Daczkowski.Emineo.Model"/>
   </session-factory>
 </hibernate-configuration>
