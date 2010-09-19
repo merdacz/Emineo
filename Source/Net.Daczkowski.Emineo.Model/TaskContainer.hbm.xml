@@ -14,13 +14,19 @@
       <key column="TaskContainerId" />
       <property name="Summary" not-null="true"/>
       <property name="Description" not-null="true" />
+      <property name="Estimate" not-null="true" />
+      <many-to-one name="AssignedTo" class="User" cascade="save-update"/>
       <many-to-one name="Project" not-null="true" column="ProjectID" />
       <many-to-one name="Parent" column="ParentID" />
+      <bag name="RegisteredWork" inverse="true" cascade="all" >
+        <key column="ParentID" />
+        <one-to-many class="RegisteredWork" />
+      </bag>
     </joined-subclass>
     <joined-subclass name="Project" table="Projects">
       <key column="TaskContainerId" />
-      <property name="Name" index="manager_idx" not-null="true"/>
-      <many-to-one name="Manager" class="User" cascade="save-update" index="manager_idx"/>
+      <property name="Name" not-null="true"/>
+      <many-to-one name="Manager" class="User" cascade="save-update"/>
     </joined-subclass>
   </class>
 </hibernate-mapping>

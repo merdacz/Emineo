@@ -60,7 +60,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Progress.hbm.xml" />
     <EmbeddedResource Include="RegisteredWork.hbm.xml" />
     <EmbeddedResource Include="User.hbm.xml" />
   </ItemGroup>

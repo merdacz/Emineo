@@ -5,6 +5,10 @@
   <class name="RegisteredWork" table="RegisteredWork">
     <id name="ID">
       <generator class="identity" />
-    </id>    
+    </id>
+    <property name="WorkAmount" />
+    <property name="Place" />
+    <many-to-one name="Developer" class="User" cascade="save-update"/>
+    <many-to-one name="Parent" column="ParentID" />
   </class>
 </hibernate-mapping>

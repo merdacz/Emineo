@@ -34,16 +34,6 @@
             }
         }
 
-        public virtual Progress Progress
-        {
-            get
-            {
-                var visitor = new WorkProgressVisitor();
-                this.AcceptVisitor(visitor);
-                return visitor.Progress;
-            }
-        }
-
         public virtual Task CreateTask(TaskSpecification specification)
         {
             Contract.Requires(specification != null);
@@ -51,6 +41,11 @@
             var task = new Task(specification, this, this);
             this.Tasks.Add(task);
             return task;
+        }
+
+        public override string ToString()
+        {
+            return "Project '" + this.Name + "' - " + this.Progress;
         }
     }
 }

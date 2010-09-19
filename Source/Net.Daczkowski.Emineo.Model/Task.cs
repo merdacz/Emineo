@@ -52,6 +52,12 @@
             get { return this.Tasks; }
         }
 
+        public virtual void Assign(User developer)
+        {
+            Contract.Requires(developer != null);
+            this.AssignedTo = developer;
+        }
+
         public virtual void RegisterWork(TimeSpan amount, User developer, Place place)
         {
             Contract.Requires(developer != null);
@@ -67,6 +73,14 @@
             var subtask = new Task(specification, this.Project, this);
             this.Tasks.Add(subtask);
             return subtask;
+        }
+
+        public override string ToString()
+        {
+            return
+                this.Summary
+                + " assigned to " + (this.AssignedTo == null ? "no one yet" : this.AssignedTo.Name)
+                + " (" + this.Progress + ")";
         }
     }
 }

@@ -34,7 +34,7 @@
         {
             get
             {
-                TimeSpan remainingWork = this.TimeSpent - this.Estimate;
+                TimeSpan remainingWork = this.Estimate - this.TimeSpent;
                 if (remainingWork < TimeSpan.Zero)
                 {
                     return -remainingWork.TotalHours;
@@ -52,6 +52,16 @@
         public virtual void TrackEstimate(TimeSpan estimate)
         {
             this.Estimate += estimate;
+        }
+
+        public override string ToString()
+        {
+            if (this.Overrun > 0)
+            {
+                return "Overrun by " + this.Overrun + "hours";
+            }
+
+            return this.TimeSpent.TotalHours + "/" + this.Estimate.TotalHours + "[h]";
         }
     }
 }

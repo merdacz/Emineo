@@ -24,14 +24,27 @@
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    var project = new Project("Emineo", new User("merdacz"));
+                    var merdacz = new User("merdacz");
+                    var joe = new User("joe");
+                    var mary = new User("mary");
+                    
+                    var project = new Project("Emineo", merdacz);
                     var taskSpecification = new TaskSpecification();
                     taskSpecification.Summary = "Write tests";
                     taskSpecification.Description = "Write tests using NUnit and Moq";
-                    taskSpecification.Estimate = TimeSpan.FromHours(1);
+                    taskSpecification.Estimate = TimeSpan.FromHours(2);
+
                     var task = project.CreateTask(taskSpecification);
-                    task.CreateSubtask(taskSpecification);
-                    task.CreateSubtask(taskSpecification);
+                    task.Assign(merdacz);
+                    var subtask1 = task.CreateSubtask(taskSpecification);
+                    subtask1.RegisterWork(TimeSpan.FromMinutes(30), joe, Place.Office);
+                    subtask1.RegisterWork(TimeSpan.FromMinutes(15), joe, Place.Office);
+
+                    var subtask2 = task.CreateSubtask(taskSpecification);
+                    subtask2.Assign(mary);
+                    subtask2.RegisterWork(TimeSpan.FromMinutes(15), merdacz, Place.Home);
+                    subtask2.RegisterWork(TimeSpan.FromMinutes(60), mary, Place.Office);
+                    
                     session.Save(project);
                     transaction.Commit();
                 }
@@ -44,9 +57,15 @@
                     var projects = session.CreateCriteria<Project>().Future<Project>();
                     foreach (var project in projects)
                     {
+                        Console.WriteLine(project);
+
                         foreach (var task in project.Tasks)
                         {
-                            Console.WriteLine(task.Summary + " " + task.Subtasks.Count);
+                            Console.WriteLine(task);
+                            foreach (var subtask in task.Subtasks)
+                            {
+                                Console.WriteLine("\t" + subtask);
+                            }
                         }
                     }
                     
