@@ -4,6 +4,13 @@
     using System.Collections.Generic;
     using Net.Daczkowski.Emineo.Model.Visitors;
 
+    /// <summary>
+    /// Common behavior for all entities.
+    /// </summary>
+    /// <remarks>
+    /// Includes necessary logic to handle persitabel objects comparisions and
+    /// provides entry point for <see cref="IVisitor"/> application. 
+    /// </remarks>
     public abstract class Entity 
     {
         private readonly List<Func<IEnumerable<Entity>>> childrenAccessors = new List<Func<IEnumerable<Entity>>>();

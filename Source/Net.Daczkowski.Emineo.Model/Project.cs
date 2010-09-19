@@ -5,6 +5,9 @@
     using Net.Daczkowski.Emineo.Model.Specifications;
     using Net.Daczkowski.Emineo.Model.Visitors;
 
+    /// <summary>
+    /// Represents the single project being maintained.
+    /// </summary>
     public class Project : Entity
     {
         protected Project()

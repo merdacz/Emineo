@@ -2,6 +2,9 @@
 {
     using System;
 
+    /// <summary>
+    /// Represents overall progress for a given project part.
+    /// </summary>
     public class Progress
     {
         public TimeSpan Estimate { get; protected set; }

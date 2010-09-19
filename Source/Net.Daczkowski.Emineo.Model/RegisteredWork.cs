@@ -3,6 +3,9 @@
     using System;
     using Net.Daczkowski.Emineo.Model.Visitors;
 
+    /// <summary>
+    /// Represents task registered work.
+    /// </summary>
     public class RegisteredWork : Entity, IHaveRegisteredWork
     {
         protected RegisteredWork()

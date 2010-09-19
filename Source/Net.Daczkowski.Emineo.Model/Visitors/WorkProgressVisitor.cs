@@ -2,6 +2,9 @@
 {
     using System;
 
+    /// <summary>
+    /// Extracts all work registered within the project (or its part).
+    /// </summary>
     public class WorkProgressVisitor : IVisitor
     {
         public WorkProgressVisitor()

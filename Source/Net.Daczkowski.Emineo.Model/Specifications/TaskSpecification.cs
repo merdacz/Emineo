@@ -2,6 +2,9 @@
 {
     using System;
 
+    /// <summary>
+    /// Specification for <see cref="Task"/>. 
+    /// </summary>
     public class TaskSpecification
     {
         public string Summary { get; set; }

@@ -6,6 +6,9 @@
     using Net.Daczkowski.Emineo.Model.Specifications;
     using Net.Daczkowski.Emineo.Model.Visitors;
 
+    /// <summary>
+    /// Represents task handled by a developer.
+    /// </summary>
     public class Task : Entity, IHaveEstimate
     {
         public Task()

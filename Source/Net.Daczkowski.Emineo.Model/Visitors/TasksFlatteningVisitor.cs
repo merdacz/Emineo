@@ -4,6 +4,9 @@
     using System.Collections.Generic;
     using Net.Daczkowski.Emineo.Model;
 
+    /// <summary>
+    /// Extracts all tasks from the project (or its part).
+    /// </summary>
     public class TasksFlatteningVisitor : IVisitor
     {
         private readonly IList<Task> tasks = new List<Task>();
