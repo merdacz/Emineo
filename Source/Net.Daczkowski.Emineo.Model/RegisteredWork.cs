@@ -20,22 +20,17 @@
             this.Parent = task;
         }
 
-        public TimeSpan WorkAmount { get; protected set; }
+        public virtual TimeSpan WorkAmount { get; protected set; }
 
-        public User Developer { get; protected set; }
+        public virtual User Developer { get; protected set; }
 
-        public Place Place { get; protected set; }
+        public virtual Place Place { get; protected set; }
 
-        public Task Parent { get; protected set; }
+        public virtual Task Parent { get; protected set; }
 
         TimeSpan IHaveRegisteredWork.Amount
         {
             get { return this.WorkAmount; }
-        }
-
-        public override int GetHashCode()
-        {
-            return (GetType().FullName + "|" + this.WorkAmount).GetHashCode();
         }
     }
 }

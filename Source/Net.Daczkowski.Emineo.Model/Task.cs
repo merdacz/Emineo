@@ -29,33 +29,28 @@
             this.Project = project;
         }
 
-        public string Summary { get; protected set; }
+        public virtual string Summary { get; protected set; }
 
-        public string Description { get; protected set; }
+        public virtual string Description { get; protected set; }
 
-        public User AssignedTo { get; protected set;  }
+        public virtual User AssignedTo { get; protected set; }
 
-        public TimeSpan Estimate { get; protected set; }
+        public virtual TimeSpan Estimate { get; protected set; }
 
-        public Task ParentTask { get; protected set; }
+        public virtual Task ParentTask { get; protected set; }
 
-        public Project Project { get; protected set; }
+        public virtual Project Project { get; protected set; }
 
-        public ICollection<Task> Subtasks { get; protected set; }
+        public virtual ICollection<Task> Subtasks { get; protected set; }
 
-        public ICollection<RegisteredWork> RegisteredWork { get; protected set; }
+        public virtual ICollection<RegisteredWork> RegisteredWork { get; protected set; }
         
         TimeSpan IHaveEstimate.Estimate
         {
             get { return this.Estimate; }
         }
 
-        public override int GetHashCode()
-        {
-            return (GetType().FullName + "|" + this.Summary).GetHashCode();
-        }
-
-        public void RegisterWork(TimeSpan amount, User developer, Place place)
+        public virtual void RegisterWork(TimeSpan amount, User developer, Place place)
         {
             Contract.Requires(developer != null);
             
@@ -63,7 +58,7 @@
             this.RegisteredWork.Add(registeredWork);
         }
 
-        public Task CreateSubtask(TaskSpecification specification)
+        public virtual Task CreateSubtask(TaskSpecification specification)
         {
             Contract.Requires(specification != null);
 

@@ -14,11 +14,6 @@
             this.Name = name;
         }
 
-        public string Name { get; protected set; }
-        
-        public override int GetHashCode()
-        {
-            return (GetType().FullName + "|" + this.Name).GetHashCode();
-        }
+        public virtual string Name { get; protected set; }
     }
 }

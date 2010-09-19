@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="Net.Daczkowski.Emineo.Model" 
+                   namespace="Net.Daczkowski.Emineo.Model">
+  <class name="Project" table="Projects">
+    <id name="ID">
+      <generator class="identity" />
+    </id>
+    <property name="Name" index="manager_idx" not-null="true"/>
+    <many-to-one name="Manager" class="User" cascade="save-update" index="manager_idx"/>
+    <bag name="Tasks" inverse="true" cascade="all-delete-orphan">
+      <key column="ProjectID" />
+      <one-to-many class="Task" />
+    </bag>
+  </class>
+</hibernate-mapping>

@@ -22,23 +22,23 @@
             this.Manager = manager;
         }
 
-        public string Name { get; protected set; }
+        public virtual string Name { get; protected set; }
 
-        public User Manager { get; protected set; }
+        public virtual User Manager { get; protected set; }
 
-        public ICollection<Task> Tasks { get; protected set; }
+        public virtual ICollection<Task> Tasks { get; protected set; }
 
-        public IEnumerable<Task> AllTasks
+        public virtual ICollection<Task> AllTasks
         {
             get
             {
                 var visitor = new TasksFlatteningVisitor();
                 this.AcceptVisitor(visitor);
-                return visitor.Tasks;
+                return new List<Task>(visitor.Tasks);
             }
         }
 
-        public Progress Progress
+        public virtual Progress Progress
         {
             get
             {
@@ -48,18 +48,13 @@
             }
         }
 
-        public Task CreateTask(TaskSpecification specification)
+        public virtual Task CreateTask(TaskSpecification specification)
         {
             Contract.Requires(specification != null);
 
             var task = new Task(specification, this);
             this.Tasks.Add(task);
             return task;
-        }
-
-        public override int GetHashCode()
-        {
-            return (GetType().FullName + "|" + this.Name).GetHashCode();
         }
     }
 }

@@ -5,11 +5,11 @@
     /// <summary>
     /// Represents overall progress for a given project part.
     /// </summary>
-    public class Progress
+    public class Progress : Entity
     {
-        public TimeSpan Estimate { get; protected set; }
+        public virtual TimeSpan Estimate { get; protected set; }
 
-        public TimeSpan TimeSpent { get; protected set; }
+        public virtual TimeSpan TimeSpent { get; protected set; }
 
         /// <summary>
         /// Gets project realization completeness information.
@@ -17,7 +17,7 @@
         /// <remarks>
         /// May be over 100% in the case of overrun.
         /// </remarks>
-        public double Completeness 
+        public virtual double Completeness 
         { 
             get
             {
@@ -30,7 +30,7 @@
         /// <summary>
         /// Gets project overrun in hours. 
         /// </summary>
-        public double Overrun
+        public virtual double Overrun
         {
             get
             {
@@ -44,12 +44,12 @@
             }
         }
 
-        public void TrackTimeSpent(TimeSpan timeSpent)
+        public virtual void TrackTimeSpent(TimeSpan timeSpent)
         {
             this.TimeSpent += timeSpent;
         }
 
-        public void TrackEstimate(TimeSpan estimate)
+        public virtual void TrackEstimate(TimeSpan estimate)
         {
             this.Estimate += estimate;
         }
