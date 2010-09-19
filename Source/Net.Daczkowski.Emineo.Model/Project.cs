@@ -8,12 +8,10 @@
     /// <summary>
     /// Represents the single project being maintained.
     /// </summary>
-    public class Project : Entity
+    public class Project : TaskContainer
     {
         protected Project()
         {
-            this.Tasks = new List<Task>();
-            this.RegisterChildCollection(() => this.Tasks);
         }
 
         public Project(string name, User manager) : this()
@@ -25,8 +23,6 @@
         public virtual string Name { get; protected set; }
 
         public virtual User Manager { get; protected set; }
-
-        public virtual ICollection<Task> Tasks { get; protected set; }
 
         public virtual ICollection<Task> AllTasks
         {
@@ -52,7 +48,7 @@
         {
             Contract.Requires(specification != null);
 
-            var task = new Task(specification, this);
+            var task = new Task(specification, this, this);
             this.Tasks.Add(task);
             return task;
         }

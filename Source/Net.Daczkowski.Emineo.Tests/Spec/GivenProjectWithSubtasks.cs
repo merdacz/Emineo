@@ -57,6 +57,7 @@
             Assert.AreEqual(4, this.project.AllTasks.Count());
         }
 
+        [Test]
         public void WhenWorkRegisteredShouldReportProperProgress()
         {
             this.initial.RegisterWork(TimeSpan.FromHours(1.5), new User("joe"), Place.Office);

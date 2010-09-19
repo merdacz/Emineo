@@ -9,17 +9,15 @@
     /// <summary>
     /// Represents task handled by a developer.
     /// </summary>
-    public class Task : Entity, IHaveEstimate
+    public class Task : TaskContainer, IHaveEstimate
     {
         public Task()
         {
-            this.Subtasks = new List<Task>();
             this.RegisteredWork = new List<RegisteredWork>();
-            this.RegisterChildCollection(() => this.Subtasks);
             this.RegisterChildCollection(() => this.RegisteredWork);    
         }
 
-        public Task(TaskSpecification specification, Project project) : this()
+        public Task(TaskSpecification specification, Project project, TaskContainer parent) : this()
         {
             Contract.Requires(specification != null);
 
@@ -27,6 +25,7 @@
             this.Description = specification.Description;
             this.Estimate = specification.Estimate;
             this.Project = project;
+            this.Parent = parent;
         }
 
         public virtual string Summary { get; protected set; }
@@ -37,17 +36,20 @@
 
         public virtual TimeSpan Estimate { get; protected set; }
 
-        public virtual Task ParentTask { get; protected set; }
+        public virtual TaskContainer Parent { get; protected set; }
 
         public virtual Project Project { get; protected set; }
-
-        public virtual ICollection<Task> Subtasks { get; protected set; }
 
         public virtual ICollection<RegisteredWork> RegisteredWork { get; protected set; }
         
         TimeSpan IHaveEstimate.Estimate
         {
             get { return this.Estimate; }
+        }
+
+        public virtual ICollection<Task> Subtasks
+        {
+            get { return this.Tasks; }
         }
 
         public virtual void RegisterWork(TimeSpan amount, User developer, Place place)
@@ -62,9 +64,8 @@
         {
             Contract.Requires(specification != null);
 
-            var subtask = new Task(specification, this.Project);
-            subtask.ParentTask = this;
-            this.Subtasks.Add(subtask);
+            var subtask = new Task(specification, this.Project, this);
+            this.Tasks.Add(subtask);
             return subtask;
         }
     }
