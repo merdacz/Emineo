@@ -7,7 +7,6 @@
     using NHibernate.Cfg;
     using NHibernate.Criterion;
     using NHibernate.Tool.hbm2ddl;
-    using NHibernate.LambdaExtensions;
 
     public static class UserQueries
     {
@@ -31,7 +30,7 @@
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    for (int i=0; i < 100; i++)
+                    for (int i = 0; i < 100; i++)
                     {
                         var user = new User("user #" + i);
                         DateTimeNow.Set(() => random.NextDate());
