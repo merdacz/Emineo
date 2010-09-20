@@ -1,7 +1,6 @@
-﻿namespace Net.Daczkowski.Emineo.Tests
+﻿namespace Net.Daczkowski.Emineo.Tests.ProjectSpecs
 {
     using System;
-    using System.Linq;
     using Net.Daczkowski.Emineo.Model;
     using Net.Daczkowski.Emineo.Model.Specifications;
     using NUnit.Framework;
@@ -54,7 +53,7 @@
         [Test]
         public void ShouldReportAllTasks()
         {
-            Assert.AreEqual(4, this.project.AllTasks.Count());
+            Assert.AreEqual(4, this.project.AllTasks.Count);
         }
 
         [Test]

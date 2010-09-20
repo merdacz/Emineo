@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Net.Daczkowski.Emineo.Model.Task">
+    <Position X="2.5" Y="2" Width="1.5" />
+    <InheritanceLine Type="Net.Daczkowski.Emineo.Model.TaskContainer" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2.875" Y="1.191" />
+        <Point X="2.875" Y="2" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="Parent" Type="Net.Daczkowski.Emineo.Model.TaskContainer" FixedToPoint="true">
+      <Path>
+        <Point X="3.875" Y="2" />
+        <Point X="3.875" Y="1.191" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.54" Y="0.335" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AACAAAQAAAAgAAgEAAAASAABAAAEIAAAAAABAAAACAA=</HashCode>
+      <FileName>Task.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AssignedTo" />
+      <Property Name="Project" />
+      <Property Name="Parent" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="RegisteredWork" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Orientation="Left" Position="0.333" />
+  </Class>
+  <Class Name="Net.Daczkowski.Emineo.Model.User" Collapsed="true">
+    <Position X="5.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Net.Daczkowski.Emineo.Model.TaskContainer" Collapsed="true">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <AssociationLine Name="Tasks" Type="Net.Daczkowski.Emineo.Model.Task" FixedFromPoint="true">
+      <Path>
+        <Point X="3.375" Y="1.191" />
+        <Point X="3.375" Y="2" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.257" Y="0.277" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAACAAAA=</HashCode>
+      <FileName>TaskContainer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Tasks" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Net.Daczkowski.Emineo.Model.Project" Collapsed="true" HideInheritanceLine="true">
+    <Position X="5.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEBAAAAAQAAAAABABAAAAAAAAAAAA=</HashCode>
+      <FileName>Project.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Net.Daczkowski.Emineo.Model.RegisteredWork">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAIAAAAAAAEEAAAAAIAA=</HashCode>
+      <FileName>RegisteredWork.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Parent" />
+      <Property Name="Developer" />
+      <Property Name="Place" />
+    </ShowAsAssociation>
+    <Lollipop Orientation="Right" Position="0.4" />
+  </Class>
+  <Enum Name="Net.Daczkowski.Emineo.Model.Place" Collapsed="true">
+    <Position X="5.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAIAAAAAwAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Place.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

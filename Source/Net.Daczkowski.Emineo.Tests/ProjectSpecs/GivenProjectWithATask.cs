@@ -1,4 +1,4 @@
-﻿namespace Net.Daczkowski.Emineo.Tests
+﻿namespace Net.Daczkowski.Emineo.Tests.ProjectSpecs
 {
     using System;
     using System.Linq;
@@ -46,7 +46,7 @@
         [Test]
         public void ShouldReportSingleTask()
         {
-            Assert.AreEqual(1, this.project.AllTasks.Count());
+            Assert.AreEqual(1, this.project.AllTasks.Count);
             Assert.AreEqual(this.task.ID, this.project.AllTasks.First().ID);
         }
     }
