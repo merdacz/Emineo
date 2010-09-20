@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Net.Daczkowski.Emineo.Model.Project">
+    <Position X="2" Y="2" Width="1.5" />
+    <InheritanceLine Type="Net.Daczkowski.Emineo.Model.TaskContainer" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2.312" Y="1.191" />
+        <Point X="2.312" Y="2" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEBAAAAAQAAAAABABAAAAAAAAAAAA=</HashCode>
+      <FileName>Project.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Manager" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Net.Daczkowski.Emineo.Model.TaskContainer" Collapsed="true">
+    <Position X="2" Y="0.5" Width="1.5" />
+    <AssociationLine Name="Tasks" Type="Net.Daczkowski.Emineo.Model.Task">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.235" Y="-0.248" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAACAAAA=</HashCode>
+      <FileName>TaskContainer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Tasks" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Net.Daczkowski.Emineo.Model.Task" Collapsed="true" HideInheritanceLine="true">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAQAAAAgAAgEAAAASAABAAAEIAAAAAABAAAACAA=</HashCode>
+      <FileName>Task.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Parent" />
+      <Property Name="Project" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Net.Daczkowski.Emineo.Model.User" Collapsed="true">
+    <Position X="5.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -47,10 +47,12 @@
     <Compile Include="..\ProductAssemblyInfo.cs">
       <Link>Properties\ProductAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="GivenProjectWithATask.cs" />
-    <Compile Include="GivenProjectWithSubtasks.cs" />
+    <Compile Include="UserSpecs\GivenAuthenticatedUser.cs" />
+    <Compile Include="UserSpecs\GivenANewUser.cs" />
+    <Compile Include="ProjectSpecs\GivenProjectWithATask.cs" />
+    <Compile Include="ProjectSpecs\GivenProjectWithSubtasks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GivenEmptyProject.cs" />
+    <Compile Include="ProjectSpecs\GivenEmptyProject.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Settings.StyleCop">

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Net.Daczkowski.Emineo.Model.Entity" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAgAAAAAAAAAAAAAAAAgAEAAAIAAAA=</HashCode>
+      <FileName>Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Net.Daczkowski.Emineo.Model.Project" Collapsed="true">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEBAAAAAQAAAAABABAAAAAAAAAAAA=</HashCode>
+      <FileName>Project.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Net.Daczkowski.Emineo.Model.Task" Collapsed="true">
+    <Position X="3" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAQAAAAgAAgEAAAASAABAAAEIAAAAAABAAAACAA=</HashCode>
+      <FileName>Task.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Bottom" Position="0.558" />
+  </Class>
+  <Class Name="Net.Daczkowski.Emineo.Model.TaskContainer" Collapsed="true">
+    <Position X="1.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAACAAAA=</HashCode>
+      <FileName>TaskContainer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Net.Daczkowski.Emineo.Model.User" Collapsed="true">
+    <Position X="7" Y="1.5" Width="1.5" />
+    <InheritanceLine Type="Net.Daczkowski.Emineo.Model.Entity" ManuallyRouted="true">
+      <Path>
+        <Point X="4.75" Y="1.062" />
+        <Point X="4.75" Y="1.298" />
+        <Point X="7.75" Y="1.298" />
+        <Point X="7.75" Y="1.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
