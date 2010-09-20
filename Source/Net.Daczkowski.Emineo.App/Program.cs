@@ -14,7 +14,7 @@
             ////PersistingProject.Launch();
             ////ProjectQueries.Launch();
             ////BatchLoad.Launch();
-            ////Cache.Launch();
+            Cache.Launch();
             LogManager.Shutdown();
         }
     }

@@ -93,7 +93,9 @@
     <EmbeddedResource Include="RegisteredWork.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="User.hbm.xml" />
+    <EmbeddedResource Include="User.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="TaskContainer.hbm.xml" />
