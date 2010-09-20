@@ -1,5 +1,6 @@
 ﻿namespace Net.Daczkowski.Emineo.App
 {
+    using System;
     using HibernatingRhinos.Profiler.Appender.NHibernate;
     using log4net;
 
@@ -9,8 +10,10 @@
         {
             NHibernateProfiler.Initialize();
             UserQueries.Launch();
+            Console.WriteLine("---");
+            FluentUserQueries.Launch();
             ////PersistingProject.Launch();
-            ////Queries.Launch();
+            ////ProjectQueries.Launch();
             ////BatchLoad.Launch();
             ////Cache.Launch();
             LogManager.Shutdown();

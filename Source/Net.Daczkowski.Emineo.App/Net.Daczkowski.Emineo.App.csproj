@@ -71,9 +71,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassMaps\UserMap.cs" />
+    <Compile Include="FluentUserQueries.cs" />
     <Compile Include="PersistingProject.cs" />
     <Compile Include="UserQueries.cs" />
-    <Compile Include="Queries.cs" />
+    <Compile Include="ProjectQueries.cs" />
     <Compile Include="BatchLoad.cs" />
     <Compile Include="Cache.cs" />
     <Compile Include="Program.cs" />

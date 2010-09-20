@@ -6,7 +6,7 @@
     using NHibernate.Cfg;
     using NHibernate.Transform;
 
-    public static class Queries
+    public static class ProjectQueries
     {
         public static void Launch()
         {

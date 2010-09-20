@@ -1,6 +1,9 @@
 ﻿namespace Net.Daczkowski.Emineo.App
 {
     using System;
+    using FluentNHibernate.Cfg;
+    using FluentNHibernate.Cfg.Db;
+    using LinFu.DynamicProxy;
     using Net.Daczkowski.Emineo.Model;
     using Net.Daczkowski.Emineo.Model.Helpers;
     using NHibernate;
@@ -9,20 +12,25 @@
     using NHibernate.Tool.hbm2ddl;
     using NHibernate.LambdaExtensions;
 
-    public static class UserQueries
+    public static class FluentUserQueries
     {
         private static Random random = new Random();
 
         public static void Launch()
         {
-            var configuration = new Configuration()
-                .Configure("NHibernate.xml");
-            new SchemaExport(configuration).Drop(false, true);
-            new SchemaExport(configuration).Create(false, true);
-            var factory = configuration.BuildSessionFactory();
-
+            var factory = Fluently.Configure()
+                .Database(MsSqlConfiguration.MsSql2008
+                    .ConnectionString(connectionString => connectionString
+                        .Database("Emineo")
+                        .Server(@"localhost\LOCAL2008")
+                        .TrustedConnection()))
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Program>())
+                .ExposeConfiguration(configuration => configuration.SetProperty("proxyfactory.factory_class", "NHibernate.ByteCode.LinFu.ProxyFactoryFactory, NHibernate.ByteCode.LinFu"))
+                .ExposeConfiguration(configuration => new SchemaExport(configuration).Drop(false, true))
+                .ExposeConfiguration(configuration => new SchemaExport(configuration).Create(false, true))
+                .BuildSessionFactory();
+            
             CreateRandomUsers(factory);
-            QueryUsers(factory);
             QueryUsersFluenty(factory);
         }
 
@@ -39,28 +47,6 @@
                         random.NextCall(() => user.Authenticate("koteczek"));
                         
                         session.Save(user);
-                    }
-
-                    transaction.Commit();
-                }
-            }
-        }
-
-        private static void QueryUsers(ISessionFactory factory)
-        {
-            using (var session = factory.OpenSession())
-            {
-                using (var transaction = session.BeginTransaction())
-                {
-                    var users = session.CreateCriteria<User>()
-                        .Add(Restrictions.IsNotNull("LastLogin"))
-                        .Add(Restrictions.Gt("LastLogin", random.NextDate()))
-                        .AddOrder(Order.Asc("LastLogin"))
-                        .List<User>();
-
-                    foreach (var user in users)
-                    {
-                        Console.WriteLine(user);
                     }
 
                     transaction.Commit();
