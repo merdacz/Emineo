@@ -31,7 +31,7 @@
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    for (int i = 0; i < 100; i++)
+                    for (int i = 0; i < 10; i++)
                     {
                         var user = new User("user #" + i);
                         DateTimeNow.Set(() => random.NextDate());
@@ -51,12 +51,9 @@
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    var users = session.CreateCriteria<User>()
-                        .Add(Restrictions.IsNotNull("LastLogin"))
-                        .Add(Restrictions.Gt("LastLogin", new DateTime(2009, 10, 10)))
-                        .AddOrder(Order.Asc("LastLogin"))
+                    var users = session.CreateQuery("from User")
                         .SetCacheable(true)
-                        .List<User>();
+                        .Enumerable();
 
                     foreach (var user in users)
                     {
@@ -74,8 +71,8 @@
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    var user = new User("user");
-                    DateTimeNow.Set(() => new DateTime(2011, 1, 1));
+                    var user = session.Get<User>(1);
+                    DateTimeNow.Set(() => new DateTime(2008, 1, 1));
                     user.Authenticate("koteczek");
 
                     session.Save(user);

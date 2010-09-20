@@ -9,5 +9,9 @@
     </id>
     <property name="Name" not-null="true" />
     <property name="LastLogin" />
+    <property name="A" />
+    <property name="B" />
+    <property name="C" />
+    <property name="D" />
   </class>
 </hibernate-mapping>
