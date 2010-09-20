@@ -31,29 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime">
-      <HintPath>..\..\Components\NHibernate\Antlr3.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="HibernatingRhinos.Profiler.Appender.v4.0">
-      <HintPath>..\..\Components\NHProf\HibernatingRhinos.Profiler.Appender.v4.0.dll</HintPath>
-    </Reference>
-    <Reference Include="Iesi.Collections">
-      <HintPath>..\..\Components\NHibernate\Iesi.Collections.dll</HintPath>
-    </Reference>
-    <Reference Include="LinFu.DynamicProxy">
-      <HintPath>..\..\Components\NHibernate\LazyLoading\LinFu.DynamicProxy.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\..\Components\NHibernate\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="Moq">
       <HintPath>..\..\Components\Moq\Moq.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate">
-      <HintPath>..\..\Components\NHibernate\NHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate.ByteCode.LinFu">
-      <HintPath>..\..\Components\NHibernate\LazyLoading\NHibernate.ByteCode.LinFu.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework, Version=2.5.5.10112, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -68,20 +47,10 @@
     <Compile Include="..\ProductAssemblyInfo.cs">
       <Link>Properties\ProductAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Demo\Example4_Cache.cs" />
-    <Compile Include="Demo\Example3_BatchLoad.cs" />
-    <Compile Include="Demo\Example1_PersistingProject.cs" />
-    <Compile Include="Demo\Example2_Queries.cs" />
-    <Compile Include="Spec\GivenProjectWithATask.cs" />
-    <Compile Include="Spec\GivenProjectWithSubtasks.cs" />
+    <Compile Include="GivenProjectWithATask.cs" />
+    <Compile Include="GivenProjectWithSubtasks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Spec\GivenEmptyProject.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Net.Daczkowski.Emineo.Model\Net.Daczkowski.Emineo.Model.csproj">
-      <Project>{7E9DFEF2-EA82-4273-8F5D-BAAAF12E748C}</Project>
-      <Name>Net.Daczkowski.Emineo.Model</Name>
-    </ProjectReference>
+    <Compile Include="GivenEmptyProject.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Settings.StyleCop">
@@ -89,9 +58,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="NHibernate.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <ProjectReference Include="..\Net.Daczkowski.Emineo.Model\Net.Daczkowski.Emineo.Model.csproj">
+      <Project>{7E9DFEF2-EA82-4273-8F5D-BAAAF12E748C}</Project>
+      <Name>Net.Daczkowski.Emineo.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

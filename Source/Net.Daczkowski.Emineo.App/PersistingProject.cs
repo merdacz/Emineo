@@ -1,23 +1,18 @@
-﻿namespace Net.Daczkowski.Emineo.Tests.Demo
+﻿namespace Net.Daczkowski.Emineo.App
 {
     using System;
-    using HibernatingRhinos.Profiler.Appender.NHibernate;
-    using log4net;
     using Net.Daczkowski.Emineo.Model;
     using Net.Daczkowski.Emineo.Model.Specifications;
     using NHibernate.Cfg;
     using NHibernate.Tool.hbm2ddl;
-    using NUnit.Framework;
 
-    [TestFixture]
-    public class Example1_PersistingProject
+    public static class PersistingProject
     {
-        [Test]
-        public void PersistingProject()
+        public static void Launch()
         {
-            NHibernateProfiler.Initialize();
             var configuration = new Configuration()
                 .Configure("NHibernate.xml");
+            new SchemaExport(configuration).Drop(false, true);
             new SchemaExport(configuration).Create(false, true);
             var factory = configuration.BuildSessionFactory();
             
@@ -51,8 +46,6 @@
                     transaction.Commit();
                 }
             }
-
-            LogManager.Shutdown();
         }
     }
 }

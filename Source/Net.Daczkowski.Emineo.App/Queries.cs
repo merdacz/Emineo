@@ -1,21 +1,22 @@
-﻿namespace Net.Daczkowski.Emineo.Tests.Demo
+﻿namespace Net.Daczkowski.Emineo.App
 {
     using System;
-    using HibernatingRhinos.Profiler.Appender.NHibernate;
-    using log4net;
     using Net.Daczkowski.Emineo.Model;
     using NHibernate;
     using NHibernate.Cfg;
     using NHibernate.Transform;
-    using NUnit.Framework;
 
-    [TestFixture]
-    public class Example2_Queries
+    public static class Queries
     {
-        [Test]
-        public void Queries()
+        public static void Launch()
         {
-            NHibernateProfiler.Initialize();
+            QueriesLazy();
+            QueriesOptimized();
+            QueriesPaged();
+        }
+
+        public static void QueriesLazy()
+        {
             var configuration = new Configuration()
                 .Configure("NHibernate.xml");
             var factory = configuration.BuildSessionFactory();
@@ -45,14 +46,10 @@
                     transaction.Commit();
                 }
             }
-
-            LogManager.Shutdown();
         }
 
-        [Test]
-        public void QueriesOptimized()
+        public static void QueriesOptimized()
         {
-            NHibernateProfiler.Initialize();
             var configuration = new Configuration()
                 .Configure("NHibernate.xml");
             var factory = configuration.BuildSessionFactory();
@@ -87,14 +84,10 @@
                     transaction.Commit();
                 }
             }
-
-            LogManager.Shutdown();
         }
 
-        [Test]
-        public void QueriesPaged()
+        public static void QueriesPaged()
         {
-            NHibernateProfiler.Initialize();
             var configuration = new Configuration()
                 .Configure("NHibernate.xml");
             var factory = configuration.BuildSessionFactory();
@@ -124,8 +117,6 @@
                     transaction.Commit();
                 }
             }
-
-            LogManager.Shutdown();
         }
     }
 }

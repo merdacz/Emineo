@@ -1,23 +1,24 @@
-﻿namespace Net.Daczkowski.Emineo.Tests.Demo
+﻿namespace Net.Daczkowski.Emineo.App
 {
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
-    using HibernatingRhinos.Profiler.Appender.NHibernate;
-    using log4net;
     using Net.Daczkowski.Emineo.Model;
     using Net.Daczkowski.Emineo.Model.Specifications;
     using NHibernate.Cfg;
     using NHibernate.Tool.hbm2ddl;
-    using NUnit.Framework;
 
-    [TestFixture]
-    public class Example3_BatchLoad
+    public static class BatchLoad
     {
-        [Test]
-        public void PersistingProjectImplicitSave()
+        public static void Launch()
         {
-            NHibernateProfiler.Initialize();
+            PersistingProjectImplicitSave();
+            PersistingProjectExplicitSave();
+            PersistingProjectBatched();
+        }
+
+        public static void PersistingProjectImplicitSave()
+        {
             var configuration = new Configuration()
                 .Configure("NHibernate.xml");
             new SchemaExport(configuration).Create(false, true);
@@ -63,15 +64,11 @@
 
                 stopwach.Stop();
                 Console.WriteLine(stopwach.Elapsed.TotalSeconds);
-
-                LogManager.Shutdown();
             }
         }
 
-        [Test]
-        public void PersistingProjectExplicitSave()
+        public static void PersistingProjectExplicitSave()
         {
-            NHibernateProfiler.Initialize();
             var configuration = new Configuration()
                 .Configure("NHibernate.xml");
             new SchemaExport(configuration).Create(false, true);
@@ -122,7 +119,6 @@
 
                         var task2 = project2.CreateTask(taskSpecification);
                         session.Save(task2);
-
                     }
 
                     transaction.Commit();
@@ -130,15 +126,11 @@
 
                 stopwach.Stop();
                 Console.WriteLine(stopwach.Elapsed.TotalSeconds);
-
-                LogManager.Shutdown();
             }
         }
 
-        [Test]
-        public void PersistingProjectBatched()
+        public static void PersistingProjectBatched()
         {
-            NHibernateProfiler.Initialize();
             var configuration = new Configuration()
                 .Configure("NHibernate.xml");
             new SchemaExport(configuration).Create(false, true);
@@ -206,6 +198,7 @@
                         session.Save(subtask2[i]);
                         subtask2[i].Assign(mary[i]);
                     }
+
                     for (int i = 0; i < 100; i++)
                     {
                         subtask1[i].RegisterWork(TimeSpan.FromMinutes(30), joe[i], Place.Office);
@@ -220,9 +213,6 @@
 
             stopwach.Stop();
             Console.WriteLine(stopwach.Elapsed.TotalSeconds);
-
-            LogManager.Shutdown();
-            
         }
     }
 }

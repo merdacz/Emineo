@@ -6,6 +6,7 @@
     <property name="dialect">NHibernate.Dialect.MsSql2008Dialect</property>
     <property name="proxyfactory.factory_class">NHibernate.ByteCode.LinFu.ProxyFactoryFactory, NHibernate.ByteCode.LinFu</property>
     <property name="generate_statistics">true</property>
+    <property name="adonet.batch_size">1</property>
     <mapping assembly="Net.Daczkowski.Emineo.Model"/>
   </session-factory>
 </hibernate-configuration>
