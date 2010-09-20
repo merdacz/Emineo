@@ -23,7 +23,6 @@
 
             CreateRandomUsers(factory);
             QueryUsers(factory);
-            QueryUsersFluenty(factory);
         }
 
         private static void CreateRandomUsers(ISessionFactory factory)
@@ -56,28 +55,6 @@
                         .Add(Restrictions.IsNotNull("LastLogin"))
                         .Add(Restrictions.Gt("LastLogin", random.NextDate()))
                         .AddOrder(Order.Asc("LastLogin"))
-                        .List<User>();
-
-                    foreach (var user in users)
-                    {
-                        Console.WriteLine(user);
-                    }
-
-                    transaction.Commit();
-                }
-            }
-        }
-
-        private static void QueryUsersFluenty(ISessionFactory factory)
-        {
-            using (var session = factory.OpenSession())
-            {
-                using (var transaction = session.BeginTransaction())
-                {
-                    var users = session.CreateCriteria<User>()
-                        .Add(SqlExpression.IsNotNull<User>(u => u.LastLogin))
-                        .Add<User>(u => u.LastLogin > random.NextDate())
-                        .AddOrder<User>(x => x.LastLogin, Order.Desc)
                         .List<User>();
 
                     foreach (var user in users)
