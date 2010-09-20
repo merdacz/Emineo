@@ -7,6 +7,9 @@
     <property name="proxyfactory.factory_class">NHibernate.ByteCode.LinFu.ProxyFactoryFactory, NHibernate.ByteCode.LinFu</property>
     <property name="generate_statistics">true</property>
     <property name="adonet.batch_size">1</property>
+    <property name='cache.provider_class'>NHibernate.Cache.HashtableCacheProvider</property>
+    <property name='cache.use_second_level_cache'>true</property>
+    <property name='cache.use_query_cache'>true</property>
     <mapping assembly="Net.Daczkowski.Emineo.Model"/>
   </session-factory>
 </hibernate-configuration>

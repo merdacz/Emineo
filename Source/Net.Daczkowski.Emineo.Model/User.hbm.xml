@@ -3,6 +3,7 @@
                    assembly="Net.Daczkowski.Emineo.Model"
                    namespace="Net.Daczkowski.Emineo.Model">
   <class name="User" table="Users" dynamic-insert="true" dynamic-update="true">
+    <cache usage="read-write"/>
     <id name="ID">
       <generator class="identity" />
     </id>

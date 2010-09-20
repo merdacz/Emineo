@@ -9,13 +9,12 @@
         public static void Main(string[] args)
         {
             NHibernateProfiler.Initialize();
-            UserQueries.Launch();
-            Console.WriteLine("---");
-            FluentUserQueries.Launch();
-            ////PersistingProject.Launch();
-            ////ProjectQueries.Launch();
-            ////BatchLoad.Launch();
-            ////Cache.Launch();
+            //UserQueries.Launch();
+            //FluentUserQueries.Launch();
+            //PersistingProject.Launch();
+            //ProjectQueries.Launch();
+            BatchLoad.Launch();
+            //Cache.Launch();
             LogManager.Shutdown();
         }
     }

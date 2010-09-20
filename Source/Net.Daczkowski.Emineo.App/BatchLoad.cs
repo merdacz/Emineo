@@ -15,6 +15,7 @@
             PersistingProjectImplicitSave();
             PersistingProjectExplicitSave();
             PersistingProjectBatched();
+            PersistingProjectBatchedStateless();
         }
 
         public static void PersistingProjectImplicitSave()
@@ -207,6 +208,91 @@
                         subtask2[i].RegisterWork(TimeSpan.FromMinutes(60), mary[i], Place.Office);
                     }
                     
+                    transaction.Commit();
+                }
+            }
+
+            stopwach.Stop();
+            Console.WriteLine(stopwach.Elapsed.TotalSeconds);
+        }
+
+        public static void PersistingProjectBatchedStateless()
+        {
+            var configuration = new Configuration()
+                .Configure("NHibernate.xml");
+            new SchemaExport(configuration).Create(false, true);
+            var factory = configuration.BuildSessionFactory();
+
+            var stopwach = new Stopwatch();
+            stopwach.Start();
+            using (var session = factory.OpenStatelessSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    var merdacz = new Dictionary<int, User>();
+                    var joe = new Dictionary<int, User>();
+                    var mary = new Dictionary<int, User>();
+
+                    for (int i = 0; i < 100; i++)
+                    {
+                        merdacz[i] = new User("merdacz");
+                        joe[i] = new User("joe");
+                        mary[i] = new User("mary");
+                        session.Insert(merdacz[i]);
+                        session.Insert(joe[i]);
+                        session.Insert(mary[i]);
+                    }
+
+                    var project = new Dictionary<int, Project>();
+                    var project2 = new Dictionary<int, Project>();
+
+                    for (int i = 0; i < 100; i++)
+                    {
+                        project[i] = new Project("Emineo", merdacz[i]);
+                        session.Insert(project[i]);
+                        project2[i] = new Project("TestingAssistant", merdacz[i]);
+                        session.Insert(project2[i]);
+                    }
+
+                    var taskSpecification = new TaskSpecification();
+                    taskSpecification.Summary = "Write tests";
+                    taskSpecification.Description = "Write tests using NUnit and Moq";
+                    taskSpecification.Estimate = TimeSpan.FromHours(2);
+
+                    var task = new Dictionary<int, Task>();
+                    var task2 = new Dictionary<int, Task>();
+
+                    for (int i = 0; i < 100; i++)
+                    {
+                        task[i] = project[i].CreateTask(taskSpecification);
+                        session.Insert(task[i]);
+                        task[i].Assign(merdacz[i]);
+
+                        task2[i] = project2[i].CreateTask(taskSpecification);
+                        session.Insert(task2[i]);
+                    }
+
+                    var subtask1 = new Dictionary<int, Task>();
+                    var subtask2 = new Dictionary<int, Task>();
+
+                    for (int i = 0; i < 100; i++)
+                    {
+                        subtask1[i] = task[i].CreateSubtask(taskSpecification);
+                        session.Insert(subtask1[i]);
+
+                        subtask2[i] = task[i].CreateSubtask(taskSpecification);
+                        session.Insert(subtask2[i]);
+                        subtask2[i].Assign(mary[i]);
+                    }
+
+                    for (int i = 0; i < 100; i++)
+                    {
+                        subtask1[i].RegisterWork(TimeSpan.FromMinutes(30), joe[i], Place.Office);
+                        subtask1[i].RegisterWork(TimeSpan.FromMinutes(15), joe[i], Place.Office);
+                        subtask2[i].RegisterWork(TimeSpan.FromMinutes(15), merdacz[i], Place.Home);
+                        subtask2[i].RegisterWork(TimeSpan.FromMinutes(60), mary[i], Place.Office);
+                    }
+
                     transaction.Commit();
                 }
             }

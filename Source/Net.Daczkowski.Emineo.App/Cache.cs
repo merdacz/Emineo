@@ -1,10 +1,17 @@
 ﻿namespace Net.Daczkowski.Emineo.App
 {
+    using System;
+    using Net.Daczkowski.Emineo.Model;
+    using Net.Daczkowski.Emineo.Model.Helpers;
+    using NHibernate;
     using NHibernate.Cfg;
+    using NHibernate.Criterion;
     using NHibernate.Tool.hbm2ddl;
 
     public static class Cache
     {
+        private static Random random = new Random();
+
         public static void Launch()
         {
             var configuration = new Configuration()
@@ -12,11 +19,66 @@
             new SchemaExport(configuration).Create(false, true);
             var factory = configuration.BuildSessionFactory();
             
+            CreateUsers(factory);
+            QueryUsers(factory);
+            CreateSingleUser(factory);
+            QueryUsers(factory);
+        }
+
+        private static void CreateUsers(ISessionFactory factory)
+        {
             using (var session = factory.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    //// code goes here
+                    for (int i = 0; i < 100; i++)
+                    {
+                        var user = new User("user #" + i);
+                        DateTimeNow.Set(() => random.NextDate());
+                        random.NextCall(() => user.Authenticate("koteczek"));
+
+                        session.Save(user);
+                    }
+
+                    transaction.Commit();
+                }
+            }
+        }
+
+        private static void QueryUsers(ISessionFactory factory)
+        {
+            using (var session = factory.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    var users = session.CreateCriteria<User>()
+                        .Add(Restrictions.IsNotNull("LastLogin"))
+                        .Add(Restrictions.Gt("LastLogin", new DateTime(2009, 10, 10)))
+                        .AddOrder(Order.Asc("LastLogin"))
+                        .SetCacheable(true)
+                        .List<User>();
+
+                    foreach (var user in users)
+                    {
+                        Console.WriteLine(user);
+                    }
+
+                    transaction.Commit();
+                }
+            }
+        }
+
+        private static void CreateSingleUser(ISessionFactory factory)
+        {
+            using (var session = factory.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    var user = new User("user");
+                    DateTimeNow.Set(() => new DateTime(2011, 1, 1));
+                    user.Authenticate("koteczek");
+
+                    session.Save(user);
                     transaction.Commit();
                 }
             }
