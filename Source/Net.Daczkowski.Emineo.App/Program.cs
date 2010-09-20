@@ -9,10 +9,10 @@
         {
             NHibernateProfiler.Initialize();
             UserQueries.Launch();
-            PersistingProject.Launch();
-            Queries.Launch();
-            BatchLoad.Launch();
-            Cache.Launch();
+            ////PersistingProject.Launch();
+            ////Queries.Launch();
+            ////BatchLoad.Launch();
+            ////Cache.Launch();
             LogManager.Shutdown();
         }
     }

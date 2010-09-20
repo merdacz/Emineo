@@ -90,7 +90,9 @@
     <None Include="Diagrams\Task.cd" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="RegisteredWork.hbm.xml" />
+    <EmbeddedResource Include="RegisteredWork.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="User.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
