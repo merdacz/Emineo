@@ -64,6 +64,7 @@
     </Compile>
     <Compile Include="Entity.cs" />
     <Compile Include="Helpers\DateTimeNow.cs" />
+    <Compile Include="Helpers\RandomExtensions.cs" />
     <Compile Include="Specifications\TaskSpecification.cs" />
     <Compile Include="TaskContainer.cs" />
     <Compile Include="Visitors\IHaveEstimate.cs" />

@@ -31,16 +31,8 @@
   </Class>
   <Class Name="Net.Daczkowski.Emineo.Model.User" Collapsed="true">
     <Position X="7" Y="1.5" Width="1.5" />
-    <InheritanceLine Type="Net.Daczkowski.Emineo.Model.Entity" ManuallyRouted="true">
-      <Path>
-        <Point X="4.75" Y="1.062" />
-        <Point X="4.75" Y="1.298" />
-        <Point X="7.75" Y="1.298" />
-        <Point X="7.75" Y="1.5" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAACAAAEAAAAAAYgAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>User.cs</FileName>
     </TypeIdentifier>
   </Class>

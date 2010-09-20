@@ -21,7 +21,7 @@
 
         public virtual string Name { get; protected set; }
 
-        public virtual DateTime LastLogin { get; protected set; }
+        public virtual DateTime? LastLogin { get; protected set; }
 
         public virtual bool IsAuthenticated { get; protected set; }
 
@@ -43,6 +43,21 @@
             {
                 throw new SecurityException("Cannot authenticate user. ");    
             }
+        }
+
+        public override string ToString()
+        {
+            var result = this.Name;
+            if (this.LastLogin.HasValue)
+            {
+                result += "(" + this.LastLogin.Value + ")";
+            }
+            else
+            {
+                result += "(no logged in yet)";
+            }
+
+            return result;
         }
     }
 }

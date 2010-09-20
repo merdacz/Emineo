@@ -8,11 +8,11 @@
         public static void Main(string[] args)
         {
             NHibernateProfiler.Initialize();
-            PersistingUser.Launch();
-            ////PersistingProject.Launch();
-            ////Queries.Launch();
-            ////BatchLoad.Launch();
-            ////Cache.Launch();
+            UserQueries.Launch();
+            PersistingProject.Launch();
+            Queries.Launch();
+            BatchLoad.Launch();
+            Cache.Launch();
             LogManager.Shutdown();
         }
     }

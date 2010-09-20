@@ -7,5 +7,6 @@
       <generator class="identity" />
     </id>
     <property name="Name" not-null="true" />
+    <property name="LastLogin" />
   </class>
 </hibernate-mapping>
