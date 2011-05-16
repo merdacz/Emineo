@@ -26,7 +26,7 @@
                 using (var transaction = session.BeginTransaction())
                 {
                     var projects = session.CreateCriteria<Project>()
-                        .SetFetchMode("Tasks", FetchMode.Join)
+                        //.SetFetchMode("Tasks", FetchMode.Join)
                         .List<Project>();
 
                     foreach (var project in projects)

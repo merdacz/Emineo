@@ -25,16 +25,6 @@
 
         public virtual bool IsAuthenticated { get; protected set; }
 
-        public virtual string A { get; protected set; }
-
-        public virtual string B { get; protected set; }
-
-        public virtual string C { get; protected set; }
-
-        public virtual string D { get; protected set; }
-
-        public virtual string E { get; protected set; }
-
         public virtual void Authenticate(string password)
         {
             Contract.Requires(password != null);
